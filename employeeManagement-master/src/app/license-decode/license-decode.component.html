@@ -1,0 +1,135 @@
+<section class="content">
+  <div class="container">
+
+    <!-- Vertical Layout -->
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <form class="form-horizontal" [formGroup]="form">
+
+            <div class="body">
+
+              <div class="row clearfix">
+                <div class="col-md-9">
+                  <div class="form-group form-float">
+                    <div class="form-line focused1">
+                      <input type="text" id="licenseKey_id" formControlName="licenseKey" bindon-ngModel="licenseKey" class="form-control">
+                      <label class="form-label">License Key</label>
+                    </div>
+                    <label *ngIf="show" class="form-label"><font color="red"> Please enter a valid license key </font></label>
+                  </div>
+                </div>
+                <br>
+                <br>
+               <br>
+                <br>
+                <div class="row clearfix">
+                  <div class="col-md-8">
+                     <label class="form-label"><font size="5"><b><u>License Details:</u></b></font></label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group form-float">
+                    <div class="form-line">
+                      <input type="text" id="customer_id" formControlName="customerId" class="form-control" maxlength="7" [(ngModel)]="licenseData.customerId" readonly>
+                      <label class="form-label">Customer Id</label>
+                    </div>
+                    <app-field-error-display [displayError]="isFieldValid('customerId')" errorMsg="Please inform your CustomerId">
+                    </app-field-error-display>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group form-float">
+                    <div class="form-line">
+                      <input type="number" step="0.01" title="Currency" pattern="^\d+(?:\.\d{1,2})?$" id="customerReview_id" formControlName="customerReview" class="form-control" maxlength="1" minlength="1"
+                        [(ngModel)]="licenseData.customerReview" readonly>
+                        <label class="form-label">Customer Review</label>
+
+                    </div>
+                    <app-field-error-display [displayError]="isFieldValid('customerReview')" errorMsg="Please inform your CustomerReview">
+                    </app-field-error-display>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row clearfix">
+                <div class="col-md-6">
+                  <div class="form-group form-float">
+                    <div class="form-line">
+                      <input type="number" id="totalBalance_id" formControlName="totalBalance" class="form-control" maxlength="9" minlength="2"
+                        step=".01" [(ngModel)]="licenseData.totalBalance" readonly>
+                        <label class="form-label">Total Balance</label>
+                    </div>
+                    <app-field-error-display [displayError]="isFieldValid('totalBalance')" errorMsg="Please inform your TotalBalance">
+                    </app-field-error-display>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group form-float">
+                    <div class="form-line">
+                      <input type="number" id="lastPayAmount_id" formControlName="lastPayAmount" class="form-control" maxlength="9" minlength="2"
+                        step=".01" [(ngModel)]="licenseData.lastPayAmount" readonly>
+                        <label class="form-label">Last Pay Amount</label>
+                    </div>
+                    <app-field-error-display [displayError]="isFieldValid('lastPayAmount')" errorMsg="Please inform your LastPayAmount">
+                    </app-field-error-display>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row clearfix">
+                <div class="col-md-4">
+                  <div class="form-group form-float">
+                    <div class="form-line">
+                      <input type="text" id="licensePeriod" class="form-control" formControlName="licensePeriod" [(ngModel)]="licenseData.licensePeriod" readonly>
+                      <label class="form-label">License Period</label>
+                    </div>
+                    <app-field-error-display [displayError]="isFieldValid('licensePeriod')" errorMsg="Please inform your LicensePeriod">
+                    </app-field-error-display>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group form-float">
+                    <div class="form-line focused1">
+                      <input type="text" id="lastPayDate_id" name="lastPayDate" formControlName="lastPayDate" class="form-control" [value]="licenseData.lastPayDate | date:'MM/dd/yyyy'"
+                        (input)="licenseData.lastPayDate =parseDate($event.target.value)" readonly>
+                      <label class="form-label">Last Pay Date</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group form-float ">
+                    <div class="form-line focused1">
+                      <input type="text" id="licenseGenerateDate_id" formControlName="licenseGenerationDate" class="form-control" [value]="licenseData.licenseGenerationDate | date:'MM/dd/yyyy'"
+                        (input)="licenseData.licenseGenerationDate =parseDate($event.target.value)" readonly>
+                        <label class="form-label">License Generate Date</label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row clearfix">
+                <div class="switch">
+                  <label><strong>Block </strong>  
+                                        <input type="checkbox" name="isBlocked" id="isBlocked_id" formControlName="block" checked="licenseData.block" [(ngModel)]="licenseData.block" readonly>
+                                        <span class="lever"></span> </label>
+                </div>
+                <br>
+              </div>
+              <br>
+
+              <button type="button" class="btn btn-danger m-t-15 waves-effect" (click)="reset()">Clear</button> &nbsp; &nbsp;
+              <button type="button" class="btn  bg-purple m-t-15 waves-effect" (click)="onDecode()">Decode License Key</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- #END# Vertical Layout -->
+
+  </div>

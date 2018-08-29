@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import './assets/css/customstyle.css';
+@import './assets/css/all-themes.css';
+ 
+@import './assets/plugins/css/animate.css';
+@import './assets/plugins/css/bootstrap.css';
+@import './assets/plugins/css/waves.css';
+
+
+input{
+  border-color: red;
+}
+
+.form-control {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: none;
+}
